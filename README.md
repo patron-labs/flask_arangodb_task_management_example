@@ -1,7 +1,7 @@
 Simple task management back-end by using flask and arangodb
 
 #### Description: 
-This code is an example use of flask and arangodb within orm architecture.
+This code is an example use of flask and arangodb within orm architecture. Please check [medium post](https://medium.com/patron-ai/simple-task-management-system-with-flask-and-arangodb-82c83e8eceec) for this repository.
 
 #### Installation & Run
 ``git clone https://github.com/patron-labs/flask_arangodb_task_management_example.git``
@@ -15,3 +15,4 @@ This code is an example use of flask and arangodb within orm architecture.
 ``pip install requirements.txt``
 
 ``python app.py``
+
