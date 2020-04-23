@@ -1,6 +1,6 @@
 import os
-from . import api
-from . import app
+import api
+from api import flask_app
 
 if __name__ == '__main__':
-    app.run()
+    flask_app.run()

@@ -3,7 +3,7 @@ from arango import ArangoClient
 from arango_orm import Database
 from models import Task_Graph, People, Categories, Tasks
 
-app = Flask(__name__)
+flask_app = Flask(__name__)
 
 
 client = ArangoClient(hosts='http://127.0.0.1:8529')

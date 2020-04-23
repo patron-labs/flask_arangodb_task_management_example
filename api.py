@@ -3,11 +3,11 @@ from datetime import datetime, date
 from flask import request, jsonify
 
 from models import Tasks, People, Categories, Category_Relation, Assignee_Relation
-from . import app, db, task_graph
+from __init__ import flask_app,db,task_graph
 
 
 # lists all the people
-@app.route('/people/list',methods=['GET'])
+@flask_app.route('/people/list',methods=['GET'])
 def list_people():
     people = db.query(People).all()
     result = []
@@ -18,7 +18,7 @@ def list_people():
 
 
 # adds a new record to people collection
-@app.route('/people/add', methods=['POST'])
+@flask_app.route('/people/add', methods=['POST'])
 def add_new_person():
     body = json.loads(request.data)
     name = body.get('name',None)
@@ -30,7 +30,7 @@ def add_new_person():
 
 
 # edits record in people collection
-@app.route('/people/edit',methods=['PUT'])
+@flask_app.route('/people/edit',methods=['PUT'])
 def edit_person():
     body = json.loads(request.data)
     key = body.get('_key',None)
@@ -49,7 +49,7 @@ def edit_person():
 
 
 # deletes a record in people collection
-@app.route('/people/remove', methods=['DELETE'])
+@flask_app.route('/people/remove', methods=['DELETE'])
 def delete_person():
     body = json.loads(request.data)
     key = body.get('_key', None)
@@ -62,7 +62,7 @@ def delete_person():
 
 
 # lists all the tasks
-@app.route('/task/list', methods=['GET'])
+@flask_app.route('/task/list', methods=['GET'])
 def list_tasks():
     tasks = db.query(Tasks).all()
     result = []
@@ -80,7 +80,7 @@ def list_tasks():
 
 
 # add new task
-@app.route('/task/add',methods=['POST'])
+@flask_app.route('/task/add',methods=['POST'])
 def add_new_task():
     body = json.loads(request.data)
     title = body.get('title', None)
@@ -111,7 +111,7 @@ def add_new_task():
 
 
 # edit task
-@app.route('/task/edit', methods=['PUT'])
+@flask_app.route('/task/edit', methods=['PUT'])
 def edit_task():
     body = json.loads(request.data)
     task_key = body.get('_key', None)
@@ -149,7 +149,7 @@ def edit_task():
 
 
 # delete task
-@app.route('/task/remove', methods=['DELETE'])
+@flask_app.route('/task/remove', methods=['DELETE'])
 def remove_task():
     body = json.loads(request.data)
     task_key = body.get('_key', None)
@@ -162,7 +162,7 @@ def remove_task():
 
 
 # lists all the categories
-@app.route('/categories/list', methods=['GET'])
+@flask_app.route('/categories/list', methods=['GET'])
 def get_categories():
     categories = db.query(Categories).all()
     result = []
@@ -173,7 +173,7 @@ def get_categories():
 
 
 # add new category
-@app.route('/categories/add', methods=['POST'])
+@flask_app.route('/categories/add', methods=['POST'])
 def add_categories():
     body = json.loads(request.data)
     category_name = body.get('name', None)
@@ -183,7 +183,7 @@ def add_categories():
 
 
 # edit category
-@app.route('/categories/edit', methods=['PUT'])
+@flask_app.route('/categories/edit', methods=['PUT'])
 def edit_categories():
     body = json.loads(request.data)
     category_name = body.get('name', None)
@@ -199,7 +199,7 @@ def edit_categories():
 
 
 # delete category
-@app.route('/categories/remove', methods=['DELETE'])
+@flask_app.route('/categories/remove', methods=['DELETE'])
 def remove_categories():
     body = json.loads(request.data)
     category_key = body.get('_key', None)
